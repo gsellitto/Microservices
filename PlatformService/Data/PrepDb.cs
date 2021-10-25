@@ -16,9 +16,11 @@ namespace PlatformService.Data
     {
         if(!context.Platforms.Any() ) {
             Console.WriteLine("seed data ...");
-            context.Platforms.AddRange(new Models.Platform(){Name="DN", Publisher="M",Cost="Free"},
-            new Models.Platform(){Name="DN2", Publisher="M2",Cost="Free3"},
-            new Models.Platform(){Name="DN3", Publisher="M3",Cost="Free3"});
+            context.Platforms.AddRange(
+                new Models.Platform(){Name="DN1", Publisher="M1",Cost="Free"},
+                new Models.Platform(){Name="DN2", Publisher="M2",Cost="Free3"},
+                new Models.Platform(){Name="DN3", Publisher="M3",Cost="Free3"},
+                new Models.Platform(){Name="DN4", Publisher="M4",Cost="Free3"});
 
             context.SaveChanges();
         } else {Console.WriteLine("Data already present");}

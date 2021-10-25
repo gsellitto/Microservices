@@ -14,5 +14,6 @@ spec:
     spec:
       containers:
         - name: platformservice
-          image: gsellitto/platformservice:latest
+          image: gs/pl:latest
+          imagePullPolicy: Never
 
