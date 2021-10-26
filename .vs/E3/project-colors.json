@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e7a72bf4-dce9-4f78-b31b-4cf17124231b": {
+      "ProjectGuid": "e7a72bf4-dce9-4f78-b31b-4cf17124231b",
+      "DisplayName": "CommandsService",
+      "ColorIndex": 0
+    },
+    "190ba1ff-ef51-4098-98a4-4cfc8dfee6d0": {
+      "ProjectGuid": "190ba1ff-ef51-4098-98a4-4cfc8dfee6d0",
+      "DisplayName": "PlatformService",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
