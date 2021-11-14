@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace PlatformService.Data
 {
     /// <summary>
@@ -5,15 +7,20 @@ namespace PlatformService.Data
     /// </summary>
     public static class PrepDb {
 
-        public static void PrepPopulation(IApplicationBuilder app){
+        public static void PrepPopulation(IApplicationBuilder app, bool isproduction){
             using  (var servicesScope=app.ApplicationServices.CreateScope())
             {
-                SeedDate(servicesScope.ServiceProvider.GetService<AppDbContext>());
+                SeedDate(servicesScope.ServiceProvider.GetService<AppDbContext>(),isproduction);
             }
+           
         }
     
-    private static void SeedDate(AppDbContext context)
+    private static void SeedDate(AppDbContext context,bool isproduction)
     {
+        if (isproduction)
+        {
+            context.Database.Migrate();
+        }
         if(!context.Platforms.Any() ) {
             Console.WriteLine("seed data ...");
             context.Platforms.AddRange(
