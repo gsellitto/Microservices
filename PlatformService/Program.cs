@@ -5,16 +5,17 @@ using PaltformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//if (true || builder.Environment.IsProduction()) {
+if (builder.Environment.IsProduction()) {
     Console.WriteLine("--> sqls erver");
     builder.Services.AddDbContext<AppDbContext>(
         opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformsConn")));
 
-//} else {
-//    //variando qui possiamo utilizzare inmemery db oppure sql server
-//    builder.Services.AddDbContext<AppDbContext>(
-//    opt => opt.UseInMemoryDatabase("InMem"));
-//}
+} else
+{
+    //variando qui possiamo utilizzare inmemery db oppure sql server
+    builder.Services.AddDbContext<AppDbContext>(
+    opt => opt.UseInMemoryDatabase("InMem"));
+}
 
 builder.Services.AddScoped<IPlatformRepo,PlatformRepo>();
 builder.Services.AddHttpClient<ICommandDataClients, HttpCommandDataClient>();
@@ -38,5 +39,5 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 app.MapControllers();
 // init del db
-//PrepDb.PrepPopulation(app, app.Environment.IsProduction());
+PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 app.Run();
